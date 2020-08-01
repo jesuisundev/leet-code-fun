@@ -3,36 +3,36 @@ from collections import deque
 
 class Solution(object):
     class Solution(object):
-    def diameterOfBinaryTree(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
-        if not root:
-            return 0
-        
-        if not root.left and not root.right:
-            return 0
+        def diameterOfBinaryTree(self, root):
+            """
+            :type root: TreeNode
+            :rtype: int
+            """
+            if not root:
+                return 0
+            
+            if not root.left and not root.right:
+                return 0
 
-        length = 1
-        seen = []
-        my_queue = deque()
+            length = 1
+            seen = []
+            my_queue = deque()
 
-        my_queue.append(root)
+            my_queue.append(root)
 
-        while my_queue:
-            current_node = my_queue.popleft()
-            seen.append(current_node)
+            while my_queue:
+                current_node = my_queue.popleft()
+                seen.append(current_node)
 
-            neighbors = self.get_neighbors(current_node, seen, my_queue)
+                neighbors = self.get_neighbors(current_node, seen, my_queue)
 
-            for neighbor in neighbors:
-                my_queue.append(neighbor)
+                for neighbor in neighbors:
+                    my_queue.append(neighbor)
 
-            if len(neighbors):
-                length += 1
-            else:
-                return length
+                if len(neighbors):
+                    length += 1
+                else:
+                    return length
 
     
     def get_neighbors(self, node, seen, my_queue):
